@@ -92,9 +92,8 @@ These define the core functionalities that the system must perform.
 •	Annotation Tool: CVAT (online or local deployment)<br>
 •	Deployment Tools:<br>
 <ul style="list-style-type:circle">  
-	o	Flask (for REST API)<br>
-	o	Docker (for containerization)<br>
-	o	TensorRT/ONNX (for acceleration)<br>
+	o	Gradio
+	
 </ul>	
 </P>
 <h3>
@@ -124,17 +123,83 @@ These define the core functionalities that the system must perform.
 <h3>
  TOOLS AND TECHNOLOGIES
 </h3>
--	CVAT: Annotation tool for drawing bounding boxes and managing datasets.<br>
--	YOLOv8: A fast, anchor-free object detection model by Ultralytics.<br> 
+-	CVAT : Annotation tool for drawing bounding boxes and managing datasets.This powerful tool simplifies the data labeling process for machine learning algorithms, making it invaluable for tasks such as object detection image segmentation and classification.<br><br>
+-	YOLOv8: A fast, anchor-free object detection model by Ultralytics.It supports classification, detection, segmentation, and is optimized for speed and accuracy on edge devices. YOLOv8 models come in different sizes (n, s, m, l, x). <br> <br>
 <ul>
 o	Augmentation: Augmentation involves transforming training data (e.g., flipping, rotating, 			scaling) to improve model generalization and robustness.<br> 	
 </ul>	
--	YOLOv11: Upcoming architecture expected to integrate transformer components.<br>   
--	Python: Used for model scripting, training, and deployment APIs.<br>  
+-	YOLOv11: Upcoming architecture expected to integrate transformer components.YOLOv11 (You Only Look Once version 11) is a state-of-the-art real-time object detection model that builds on the foundational YOLO family with significant improvements in speed, accuracy, and efficiency<br><br>   
+-	Python:Python serves as the primary programming language for developing the entire object detection pipeline, from model training to inference and deployment, due to its rich ecosystem of libraries and deep learning frameworks.<br> <br>
 -	PyTorch: Backend framework for YOLOv8.<br>   
--	Ultralytics: Ultralytics is the organization behind YOLOv5 and YOLOv8, providing state-of-the-art, easy-to-use object detection models and tools.<br> 	
--	Eigen-CAM- Eigen-CAM is a class activation mapping technique that visualizes important
-  regions in an image by leveraging the principal components of deep network activations.<br> 	
+-	Ultralytics: Ultralytics is the organization behind YOLOv5 and YOLOv8, providing state-of-the-art, easy-to-use object detection models and tools.•	The company focuses on real-time vision AI, offering tools, models, and infrastructure for tasks like:
+<ul >	
+	o	Object detection<br>	
+	o	Image segmentation<br>
+	o	Classification<br>
+	o	Model training and deployment<br>
+</ul>
+<br> 	
+-	Eigen-CAM- Eigen-CAM (Eigen Class Activation Mapping) is a class-independent visualization technique used to highlight the most important regions in an input image that influence a deep neural network’s decision.<br> <br>
 -	Gradio: Gradio is a Python library that lets you quickly create interactive web interfaces for machine learning models.<br> 
+It is widely used by researchers, developers, and ML engineers to:
+
+<ul>	
+	•	Visualize model predictions<br>
+	•	Share models via a browser<br>
+	•	Enable user input and feedback<br>
+	•	Deploy demos instantly<br>
+
+</ul>
+
+##  System Architecture & Workflow
+
+### 1️. Data Collection
+Images of transmission towers collected for training and validation.
+
+---
+
+### 2. Data Annotation
+- Tool: CVAT
+- Export Format: YOLO (.txt per image)
+
+---
+
+### 3. Dataset Preparation
+- 70% Training
+- 20% Validation
+- 10% Testing
+
+**Augmentations Applied:**
+- Mosaic
+- MixUp
+- HSV jitter
+- Horizontal flipping
+- Brightness adjustments
+
+---
+
+### 4. Model Training
+
+- YOLOv8 (Ultralytics)
+- YOLOv11 (comparison model)
+- Custom dataset training
+---
+
+### 5. Model Evaluation
+
+- mAP (mean Average Precision)
+- Precision
+- Recall
+- Confusion Matrix
+
+---
+### 6. Model Explainability
+
+- Eigen-CAM visualization
+- Highlights important decision regions
+---
+### 7. Deployment
+
+- Gradio interactive interface
 
 
